@@ -9,7 +9,7 @@ public class ComandoGuarda implements Comando {
 	public void esegui(Partita partita) {
 		// TODO Auto-generated method stub
 		System.out.println("--- STANZA CORRENTE ---");
-		System.out.println(partita.getLabirinto().getStanzaCorrente().toString());
+		System.out.println(partita.getLabirinto().getStanzaCorrente().getDescrizione());
 		
 		System.out.println("--- STATO GIOCATORE ---");
 		System.out.println("CFU attuali: " + partita.getGiocatore().getCfu());

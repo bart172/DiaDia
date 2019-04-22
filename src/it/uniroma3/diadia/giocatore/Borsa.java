@@ -49,7 +49,8 @@ public class Borsa {
 		int peso = 0;
 
 		for (int i= 0; i<this.numeroAttrezzi; i++) {
-			peso += this.attrezzi[i].getPeso();
+			if (attrezzi[i]!= null) 
+				peso += this.attrezzi[i].getPeso();
 		}
 		return peso;
 	}
@@ -101,7 +102,8 @@ public class Borsa {
 		} else {
 			s.append("Contenuto borsa ("+this.getPeso()+"kg/"+this.getPesoMax()+"kg): ");
 			for (int i= 0; i<this.numeroAttrezzi; i++)
-				s.append(attrezzi[i].toString()+" ");
+				if (attrezzi[i] != null)
+					s.append(attrezzi[i].toString()+" ");
 		}
 
 		return s.toString();

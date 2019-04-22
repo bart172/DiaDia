@@ -24,7 +24,7 @@ public class ComandoVai implements Comando {
 			partita.getLabirinto().setStanzaCorrente(prossimaStanza);
 			int cfu = partita.getGiocatore().getCfu();
 			partita.getGiocatore().setCfu(cfu-1);
-			System.out.println(partita.getLabirinto().getStanzaCorrente().toString());
+			System.out.println(partita.getLabirinto().getStanzaCorrente().getDescrizione());
 		}
 	}
 
