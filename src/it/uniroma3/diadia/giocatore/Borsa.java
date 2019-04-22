@@ -39,8 +39,9 @@ public class Borsa {
 	public Attrezzo getAttrezzo(String nomeAttrezzo) {
 		Attrezzo a = null;
 		for (int i= 0; i<this.numeroAttrezzi; i++)
-			if (this.attrezzi[i].getNome().equals(nomeAttrezzo))
-				a = attrezzi[i];
+			if (this.attrezzi[i]!= null)
+				if (this.attrezzi[i].getNome().equals(nomeAttrezzo))
+					a = attrezzi[i];
 		return a; 
 	}
 
@@ -94,7 +95,7 @@ public class Borsa {
 
 	public String toString() {
 		StringBuilder s = new StringBuilder();
-		
+
 		if (this.isEmpty()) {
 			s.append("La borsa è vuota.");
 		} else {
