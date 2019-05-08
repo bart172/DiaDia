@@ -44,17 +44,20 @@ public class Stanza {
      * @param stanza stanza adiacente nella direzione indicata dal primo parametro.
      */
     public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
-        boolean aggiornato = false;
-    	for(int i=0; i<this.direzioni.length; i++)
-        	if (direzione.equals(this.direzioni[i])) {
-        		this.stanzeAdiacenti[i] = stanza;
-        		aggiornato = true;
-        	}
+    	boolean aggiornato = false;
+    	for(int i=0; i<this.direzioni.length; i++) {
+    		if(direzione != null) {
+    			if (direzione.equals(this.direzioni[i])) {
+    				this.stanzeAdiacenti[i] = stanza;
+    				aggiornato = true;
+    			}
+    		}
+    	}
     	if (!aggiornato)
     		if (this.numeroStanzeAdiacenti < NUMERO_MASSIMO_DIREZIONI) {
     			this.direzioni[numeroStanzeAdiacenti] = direzione;
     			this.stanzeAdiacenti[numeroStanzeAdiacenti] = stanza;
-    		    this.numeroStanzeAdiacenti++;
+    			this.numeroStanzeAdiacenti++;
     		}
     }
 
@@ -62,13 +65,14 @@ public class Stanza {
      * Restituisce la stanza adiacente nella direzione specificata
      * @param direzione
      */
-	public Stanza getStanzaAdiacente(String direzione) {
-        Stanza stanza = null;
-		for(int i=0; i<this.numeroStanzeAdiacenti; i++)
-        	if (this.direzioni[i].equals(direzione))
-        		stanza = this.stanzeAdiacenti[i];
-        return stanza;
-	}
+    public Stanza getStanzaAdiacente(String direzione) {
+    	Stanza stanza = null;
+    	for(int i=0; i<this.numeroStanzeAdiacenti; i++)
+    		if(direzione != null)
+    			if (this.direzioni[i].equals(direzione))
+    				stanza = this.stanzeAdiacenti[i];
+    	return stanza;
+    }
 
     /**
      * Restituisce la nome della stanza.

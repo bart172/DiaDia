@@ -20,7 +20,7 @@ public class ComandoPrendi implements Comando {
 			if(partita.getGiocatore().getBorsa().getPeso() + att.getPeso() < partita.getGiocatore().getBorsa().getPesoMax()) {
 				partita.getLabirinto().getStanzaCorrente().removeAttrezzo(att);
 				partita.getGiocatore().getBorsa().addAttrezzo(att);
-				System.out.println("Hai preso "+ att + " e l'hai messo nella borsa.");
+				System.out.println("L'oggetto è stato preso! Ora è nella tua borsa");
 			}
 			else
 				System.out.println("Hai superato il limite di peso della tua borsa");

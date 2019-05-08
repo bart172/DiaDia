@@ -14,15 +14,11 @@ public class BorsaTest {
 	Attrezzo primoAttrezzo;
 	Attrezzo secondoAttrezzo;
 	Attrezzo terzoAttrezzo;
+	Attrezzo attrezzoAmmissibile;
+	Attrezzo attrezzoNonAmmissibile;
+	Attrezzo attrezzoNonNellaBorsa;
 	
-	
-	
-	/* Da testare:
-	 * - hasAttrezzo
-	 * - addAttrezzo
-	 * - getAttrezzo
-	 * - removeAttrezzo
-	 */
+
 	@Before
 	public void setUp() throws Exception {
 		borsa = new Borsa();
@@ -30,6 +26,9 @@ public class BorsaTest {
 		primoAttrezzo = new Attrezzo("primoAttrezzo", 1);
 		secondoAttrezzo = new Attrezzo("secondoAttrezzo", 2);
 		terzoAttrezzo = new Attrezzo("terzoAttrezzo", 3);
+		attrezzoAmmissibile = new Attrezzo("attrezzoAmmissibile", 1);
+		attrezzoNonAmmissibile = new Attrezzo("attrezzoNonAmmissibile", 11);
+		attrezzoNonNellaBorsa = new Attrezzo("attrezzoNonNellaBorsa", 1);
 		
 		this.borsa.addAttrezzo(primoAttrezzo);
 		this.borsa.addAttrezzo(secondoAttrezzo);
@@ -57,21 +56,14 @@ public class BorsaTest {
 	
 	@Test
 	public void testAddAttrezzoDiUnAttrezzoConPesoAmmissibile() {
-		Attrezzo attrezzoAmmissibile = new Attrezzo("attrezzoAmmissibile", 1);
 		assertTrue(this.borsa.addAttrezzo(attrezzoAmmissibile));
 	}
 	
 	@Test
 	public void testAddAttrezzoDiUnAttrezzoConPesoTroppoGrande() {
-		Attrezzo attrezzoNonAmmissibile = new Attrezzo("attrezzoNonAmmissibile", 11);
 		assertFalse(this.borsa.addAttrezzo(attrezzoNonAmmissibile));
 	}
-	
-	@Test
-	public void testAddAttrezzoDiUnAttrezzoCheNonEsiste() {
-		assertFalse(this.borsa.addAttrezzo(null));
-	}
-	
+		
 	/*-------------------------TEST SU getAttrezzo------------------------*/
 	
 	@Test
@@ -83,13 +75,6 @@ public class BorsaTest {
 	public void testGetAttrezzoDiUnAttrezzoCheNonEsiste() {
 		assertNull(this.borsa.getAttrezzo("attrezzoCheNonEsiste"));
 	}
-	
-	@Test
-	public void testGetAttrezzoDiUnAttrezzoCheNonENellaBorsa() {
-		Attrezzo attrezzoNonNellaBorsa = new Attrezzo("attrezzoNonNellaBorsa", 1);
-		assertNull(this.borsa.getAttrezzo("attrezzoNonNellaBorsa"));
-	}
-	
 	
 	/*-------------------------TEST SU removeAttrezzo------------------------*/
 	
@@ -107,9 +92,6 @@ public class BorsaTest {
 	public void testRemoveAttrezzoDiUnAttrezzoNull() {
 		assertNull(this.borsa.removeAttrezzo(null));
 	}
-	
-	
-	
 	
 	
 }

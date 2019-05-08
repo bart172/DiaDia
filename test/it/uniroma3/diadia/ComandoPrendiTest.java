@@ -1,4 +1,4 @@
-package it.uniroma3.diadia.test;
+package it.uniroma3.diadia;
 
 import static org.junit.Assert.*;
 
@@ -14,30 +14,30 @@ public class ComandoPrendiTest {
 
 	Partita partita;
 	Attrezzo attrezzoDaPrendere;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		partita = new Partita();
 		attrezzoDaPrendere = new Attrezzo("attrezzoDaPrendere", 1);
 		partita.getLabirinto().getStanzaCorrente().addAttrezzo(attrezzoDaPrendere);
-		
+
 	}
 
     /*---------Test getNome-------*/
-	
+
 	@Test
 	public void testGetNomePositivo() {
 		ComandoPrendi comandoPrendi = new ComandoPrendi();
 		assertEquals("prendi", comandoPrendi.getNome());
 	}
-	
+
 	@Test
 	public void testGetNomeNegativo() {
 		ComandoPrendi comandoPrendi = new ComandoPrendi();
 		assertNotEquals("comando Sconosciuto", comandoPrendi.getNome());
 	}
-	
-	
+
+
 	/*-----------Test setParametro------------*/
 	@Test
 	public void testSetParametroPositivo() {
@@ -45,33 +45,33 @@ public class ComandoPrendiTest {
 		comandoPrendi.setParametro("attrezzo1");
 		assertEquals("attrezzo1", comandoPrendi.getParametro());
 	}
-	
+
 	@Test
 	public void testSetParametroNegativo() {
 		ComandoPosa comandoPrendi = new ComandoPosa();
 		comandoPrendi.setParametro("attrezzo1");
 		assertNotEquals("attrezzo2", comandoPrendi.getParametro());
 	}
-	
-	
+
+
 	/*---------Test getParametro-------*/
-	
+
 	@Test
 	public void testGetParametroPositivo() {
 		ComandoPrendi comandoPrendi = new ComandoPrendi();
 		comandoPrendi.setParametro("attrezzoDaPrendere");
 		assertEquals("attrezzoDaPrendere", comandoPrendi.getParametro());
 	}
-	
+
 	@Test 
 	public void testGetParametroNegativo() {
 		ComandoPrendi comandoPrendi = new ComandoPrendi();
 		comandoPrendi.setParametro("attrezzoDaPrendere");
 		assertNotEquals("attrezzoNonDaPrendere", comandoPrendi.getParametro());
 	}
-	
+
 	/*---------Test Esegui-------*/
-	
+
 	@Test 
 	public void testEseguiDiUnAttrezzoDaPosare() {
 		ComandoPrendi comandoPrendi = new ComandoPrendi();
@@ -79,7 +79,7 @@ public class ComandoPrendiTest {
 		comandoPrendi.esegui(partita);
 		assertTrue(partita.getGiocatore().getBorsa().hasAttrezzo("attrezzoDaPrendere"));
 	}
-	
+
 	@Test
 	public void testEseguiDiUnAttrezzoNonNellaStanza() {
 		ComandoPrendi comandoPrendi = new ComandoPrendi();
@@ -89,4 +89,4 @@ public class ComandoPrendiTest {
 	}
 
 
-}
+} 
