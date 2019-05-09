@@ -23,18 +23,17 @@ public class Stanza {
 	static final private int NUMERO_MASSIMO_DIREZIONI = 4;
 	static final private int NUMERO_MASSIMO_ATTREZZI = 10;
 	
-	private String descrizione;
+	private String nome;
 	private Map<String, Stanza> stanzeAdiacenti;
 	//private Map<String, Stanza> uscite;
 	private ArrayList<Attrezzo> attrezzi;
-	private String nome;
 	private int numeroAttrezzi;
 	//private int numeroStanzeAdiacenti;
 	
-	public Stanza(String descrizione) {
+	public Stanza(String nome) {
 		//this.uscite = new HashMap<>();
 		this.attrezzi = new ArrayList<>();
-		this.descrizione = descrizione;
+		this.nome = nome;
 		this.stanzeAdiacenti = new HashMap<>();
 	}
 
