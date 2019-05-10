@@ -26,11 +26,15 @@ public class Borsa {
 	}
 
 	public boolean addAttrezzo(Attrezzo attrezzo) {
-		return this.attrezzi.add(attrezzo);
+		if (this.getPeso() + attrezzo.getPeso() <= this.pesoMax) 
+			return this.attrezzi.add(attrezzo);
+		return false;
 	}
+	
 	public int getPesoMax() {
-		return pesoMax;
+		return this.pesoMax;
 	}
+	
 	public Attrezzo getAttrezzo(String nomeAttrezzo) {
 		Iterator<Attrezzo> it = this.attrezzi.iterator();
 		while (it.hasNext()) {
@@ -81,7 +85,7 @@ public class Borsa {
 			s.append("Contenuto borsa ("+this.getPeso()+"kg/"+this.getPesoMax()+"kg): ");
 
 		while(it.hasNext()) { 
-				s.append(it.next().toString() + " ");
+			s.append(it.next().toString() + " ");
 		}
 
 		return s.toString();
