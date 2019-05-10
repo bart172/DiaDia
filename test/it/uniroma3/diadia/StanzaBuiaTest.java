@@ -39,7 +39,7 @@ public class StanzaBuiaTest {
 	@Test
 	public void testStanzaBuiaDopoAverRimossoOggettoChiave() {
 
-		stanzaBuia.removeAttrezzo(oggettoChiave);	
+		stanzaBuia.removeAttrezzo(oggettoChiave.getNome());	
 		assertEquals("Qui c'� buio pesto! Se solo avessi un oggettoChiave...", stanzaBuia.getDescrizione());	
 	}
 

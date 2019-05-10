@@ -1,9 +1,11 @@
 package it.uniroma3.diadia.ambienti;
 import java.awt.List;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
@@ -45,7 +47,7 @@ public class Stanza {
     	return this.stanzeAdiacenti.get(direzione);
     }
     
-    void impostaStanzaAdiacente(String direzione, Stanza stanzaAdiacente) {
+    public void impostaStanzaAdiacente(String direzione, Stanza stanzaAdiacente) {
     	this.stanzeAdiacenti.put(direzione,  stanzaAdiacente);
     }
 
@@ -100,7 +102,7 @@ public class Stanza {
     	risultato.append("\nUscite: ");
     	
     	
-    	for (String direzione : this.stanzeAdiacenti)
+    	for (String direzione : this.stanzeAdiacenti.keySet())
     		if (direzione!=null)
     			risultato.append(" " + direzione);
     	risultato.append("\nAttrezzi nella stanza: ");
@@ -162,11 +164,14 @@ public class Stanza {
 	}
 
 
-	public String[] getDirezioni() {
-		String[] direzioni = new String[this.numeroStanzeAdiacenti];
-	    for(int i=0; i<this.numeroStanzeAdiacenti; i++)
-	    	direzioni[i] = this.direzioni[i];
-	    return direzioni;
+	public Set<String> getDirezioni() {
+		
+		return this.stanzeAdiacenti.keySet();
+				
+//		String[] direzioni = new String[this.numeroStanzeAdiacenti];
+//	    for(int i=0; i<this.numeroStanzeAdiacenti; i++)
+//	    	direzioni[i] = this.direzioni[i];
+//	    return direzioni;
     }
 
 }
