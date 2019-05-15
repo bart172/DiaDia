@@ -78,6 +78,8 @@ public class ComandoPrendiTest {
 		comandoPrendi.setParametro("attrezzoDaPrendere");
 		comandoPrendi.esegui(partita);
 		assertTrue(partita.getGiocatore().getBorsa().hasAttrezzo("attrezzoDaPrendere"));
+		assertFalse(partita.getLabirinto().getStanzaCorrente().hasAttrezzo("attrezzoDaPrendere"));
+
 	}
 
 	@Test

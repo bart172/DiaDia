@@ -14,7 +14,7 @@ public class StanzaBuia extends Stanza {
 		if (super.hasAttrezzo(this.oggettoChiave)) {
 			return super.toString();
 		} else {
-			return "Qui c'è buio pesto! Se solo avessi un " + this.oggettoChiave + "...";
+			return "Qui c'Ã¨ buio pesto! Se solo avessi un " + this.oggettoChiave + "...";
 		}
 	}
 }

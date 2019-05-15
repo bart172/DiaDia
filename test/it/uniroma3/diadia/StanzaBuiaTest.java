@@ -27,26 +27,26 @@ public class StanzaBuiaTest {
 
 	@Test
 	public void testStanzaAncoraBuia() {
-		assertEquals("Qui c'ï¿½ buio pesto! Se solo avessi un oggettoChiave...", stanzaBuia.getDescrizione());
+		assertEquals("Qui c'è buio pesto! Se solo avessi un oggettoChiave...", stanzaBuia.getDescrizione());
 	}
 
 	@Test
 	public void testStanzaBuiaDiventaVisibile() {
 		stanzaBuia.addAttrezzo(oggettoChiave);
-		assertNotEquals("Qui c'ï¿½ buio pesto! Se solo avessi un oggettoChiave...", stanzaBuia.getDescrizione());
+		assertNotEquals("Qui c'è buio pesto! Se solo avessi un oggettoChiave...", stanzaBuia.getDescrizione());
 	}
 
 	@Test
 	public void testStanzaBuiaDopoAverRimossoOggettoChiave() {
 
-		stanzaBuia.removeAttrezzo(oggettoChiave.getNome());	
-		assertEquals("Qui c'ï¿½ buio pesto! Se solo avessi un oggettoChiave...", stanzaBuia.getDescrizione());	
+		stanzaBuia.removeAttrezzo(oggettoChiave);	
+		assertEquals("Qui c'è buio pesto! Se solo avessi un oggettoChiave...", stanzaBuia.getDescrizione());	
 	}
 
 	@Test
 	public void testStanzaBuiaConOggettoNonChiave() {
 		stanzaBuia.addAttrezzo(attrezzoNonChiave);
-		assertEquals("Qui c'ï¿½ buio pesto! Se solo avessi un oggettoChiave...", stanzaBuia.getDescrizione());
+		assertEquals("Qui c'è buio pesto! Se solo avessi un oggettoChiave...", stanzaBuia.getDescrizione());
 	}
 
 }

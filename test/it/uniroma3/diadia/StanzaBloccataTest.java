@@ -69,7 +69,7 @@ public class StanzaBloccataTest {
 	public void testGetDescrizioneDiStanzaBloccata() {
 		stanzaCorrente.impostaStanzaAdiacente("direzioneBloccata", stanzaBloccata);
 		stanzaCorrente.addAttrezzo(attrezzoNonSbloccante);
-		assertEquals("Ti trovi in una stanza bloccata: " + stanzaBloccata.toString() + "\nLa direzione direzioneBloccata ï¿½ bloccata se non hai con te attrezzoSbloccante" , stanzaCorrente.getStanzaAdiacente("direzioneBloccata").getDescrizione());
+		assertEquals("Ti trovi in una stanza bloccata: " + stanzaBloccata.toString() + "\nLa direzione direzioneBloccata è bloccata se non hai con te attrezzoSbloccante" , stanzaCorrente.getStanzaAdiacente("direzioneBloccata").getDescrizione());
 
 	}
 
