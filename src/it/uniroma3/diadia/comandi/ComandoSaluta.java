@@ -14,7 +14,7 @@ public class ComandoSaluta extends AbstractComando {
 		AbstractPersonaggio personaggio;
 		personaggio = partita.getStanzaCorrente().getPersonaggio();
 		if (personaggio != null) {
-			this.messaggio = personaggio.agisci(partita);
+			this.messaggio = personaggio.saluta();
 			System.out.println(this.messaggio);
 		} else System.out.println(MESSAGGIO_CHI);
 	}

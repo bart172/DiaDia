@@ -76,6 +76,7 @@ public class Borsa {
 		return null;
 		}
 
+	@Override
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		Iterator <Attrezzo> it = this.attrezzi.iterator();
@@ -83,8 +84,9 @@ public class Borsa {
 			s.append("La borsa è vuota.");
 		} else {
 			s.append("Contenuto borsa ("+this.getPeso()+"kg/"+this.getPesoMax()+"kg): ");
+			
 			while(it.hasNext()) {
-				s.append(this.attrezzi.toString()+" ");
+				s.append(it.next().toString()+" ");
 			}
 		}
 		return s.toString();
@@ -130,16 +132,4 @@ public class Borsa {
 		return a;
 	}
 	
-	//Seconda opzione: non � utile, anche perch� � limitato
-//	public Map<Integer, Set<Attrezzo>>getContenutoRaggruppatoPerPesoLimitatoMax10(){
-//		Map<Integer, Set<Attrezzo>> peso2Attrezzi = new HashMap<>();
-//		for(int i=0; i<10; i++) {
-//			final HashSet<Attrezzo> hashSet = new HashSet<>();
-//			peso2Attrezzi.put(i, hashSet);
-//		}
-//		for(Attrezzo a : this.getAttrezzi()) {
-//			peso2Attrezzi.get(a.getPeso()).add(a);
-//		}
-//		return peso2Attrezzi;
-//	}
 }

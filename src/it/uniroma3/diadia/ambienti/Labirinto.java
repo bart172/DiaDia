@@ -1,6 +1,10 @@
 package it.uniroma3.diadia.ambienti;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
+import it.uniroma3.diadia.personaggi.Cane;
+import it.uniroma3.diadia.personaggi.Mago;
+import it.uniroma3.diadia.personaggi.Strega;
 
 public class Labirinto {
 	private Stanza stanzaVincente;
@@ -19,6 +23,12 @@ public class Labirinto {
 		/* crea gli attrezzi */
 		Attrezzo lanterna = new Attrezzo("lanterna",3);
 		Attrezzo osso = new Attrezzo("osso",1);
+		Attrezzo carne = new Attrezzo("carne", 2);
+		
+		/* crea i personaggi */
+		AbstractPersonaggio strega = new Strega("Strega", "");
+		AbstractPersonaggio mago = new Mago("Mago", "", new Attrezzo("bacchetta", 1));
+		AbstractPersonaggio cane = new Cane("Cane", "");
 
 		/* crea stanze del labirinto */
 		Stanza atrio = new Stanza("Atrio");
@@ -44,6 +54,12 @@ public class Labirinto {
 		/* pone gli attrezzi nelle stanze */
 		aulaN10.addAttrezzo(lanterna);
 		atrio.addAttrezzo(osso);
+		laboratorio.addAttrezzo(carne);
+		
+		/* aggiunge i personaggi nelle stanze */
+		atrio.addPersonaggio(strega);
+		aulaN11.addPersonaggio(mago);
+		aulaN10.addPersonaggio(cane);
 
 		// il gioco comincia nell'atrio
 		this.stanzaCorrente = atrio;  

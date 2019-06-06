@@ -88,11 +88,11 @@ public class Stanza {
 		this.attrezzi.add(attrezzo);
 		return true;
 	}
-	
+
 	public void addPersonaggio(AbstractPersonaggio personaggio) {
 		this.personaggio = personaggio;
 	}
-	
+
 	public AbstractPersonaggio getPersonaggio() {
 		return this.personaggio;
 	}
@@ -120,8 +120,13 @@ public class Stanza {
 		else {
 			risultato.append("\nAttrezzi nella stanza: ");
 			if(iteratore.hasNext()) {
-				risultato.append(this.attrezzi.toString()+" ");
+				risultato.append(iteratore.next().toString()+" ");
 			}
+		}
+
+		if (this.getPersonaggio() != null) {
+			risultato.append("\nPersonaggio nella stanza: ");
+			risultato.append(this.getPersonaggio().toString());
 		}
 		return risultato.toString();
 	}

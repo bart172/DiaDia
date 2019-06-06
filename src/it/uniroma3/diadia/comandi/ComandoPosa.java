@@ -28,6 +28,15 @@ public class ComandoPosa extends AbstractComando {
 		// TODO Auto-generated method stub
 		return "posa";
 	}
+	
+	@Override
+	public void setParametro(String parametro) {
+		this.nomeAttrezzo = parametro;
+	}
 
+	@Override
+	public String getParametro() {
+		return this.nomeAttrezzo;
+	}
 
 }

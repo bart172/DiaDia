@@ -11,10 +11,10 @@ public class ComandoPrendi extends AbstractComando {
 	@Override
 	public void esegui(Partita partita) {
 		// TODO Auto-generated method stub
-		Attrezzo att = partita.getLabirinto().getStanzaCorrente().getAttrezzo(nomeAttrezzo);
-		if(partita.getLabirinto().getStanzaCorrente().hasAttrezzo(nomeAttrezzo)) {
+		Attrezzo att = partita.getStanzaCorrente().getAttrezzo(nomeAttrezzo);
+		if(partita.getStanzaCorrente().hasAttrezzo(nomeAttrezzo)) {
 			if(partita.getGiocatore().getBorsa().getPeso() + att.getPeso() < partita.getGiocatore().getBorsa().getPesoMax()) {
-				partita.getLabirinto().getStanzaCorrente().removeAttrezzo(att);
+				partita.getStanzaCorrente().removeAttrezzo(att);
 				partita.getGiocatore().getBorsa().addAttrezzo(att);
 				System.out.println("L'oggetto � stato preso! Ora � nella tua borsa");
 			}
@@ -30,6 +30,11 @@ public class ComandoPrendi extends AbstractComando {
 	public String getNome() {
 		// TODO Auto-generated method stub
 		return "prendi";
+	}
+	
+	@Override
+	public void setParametro(String parametro) {
+		this.nomeAttrezzo = parametro;
 	}
 
 	@Override
