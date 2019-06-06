@@ -124,6 +124,12 @@ public class Borsa {
 		return peso2Attrezzi;
 	}
 	
+	public SortedSet<Attrezzo> getSortedSetOrdinatoPerPeso() {
+		SortedSet<Attrezzo> a = new TreeSet<Attrezzo>(new ComparatorePerPesoENome());
+		a.addAll(this.getAttrezzi());
+		return a;
+	}
+	
 	//Seconda opzione: non � utile, anche perch� � limitato
 //	public Map<Integer, Set<Attrezzo>>getContenutoRaggruppatoPerPesoLimitatoMax10(){
 //		Map<Integer, Set<Attrezzo>> peso2Attrezzi = new HashMap<>();

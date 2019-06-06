@@ -3,14 +3,10 @@ package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-public class ComandoPrendi implements Comando {
+public class ComandoPrendi extends AbstractComando {
 
 	private String nomeAttrezzo;
-	@Override
-	public void setParametro(String parametro) {
-		// TODO Auto-generated method stub
-		this.nomeAttrezzo = parametro;
-	}
+
 
 	@Override
 	public void esegui(Partita partita) {
@@ -20,7 +16,7 @@ public class ComandoPrendi implements Comando {
 			if(partita.getGiocatore().getBorsa().getPeso() + att.getPeso() < partita.getGiocatore().getBorsa().getPesoMax()) {
 				partita.getLabirinto().getStanzaCorrente().removeAttrezzo(att);
 				partita.getGiocatore().getBorsa().addAttrezzo(att);
-				System.out.println("L'oggetto è stato preso! Ora è nella tua borsa");
+				System.out.println("L'oggetto ï¿½ stato preso! Ora ï¿½ nella tua borsa");
 			}
 			else
 				System.out.println("Hai superato il limite di peso della tua borsa");

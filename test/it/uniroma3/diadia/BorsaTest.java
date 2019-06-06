@@ -4,6 +4,8 @@ import it.uniroma3.diadia.giocatore.Borsa;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import static org.junit.Assert.*;
 
+import java.util.Iterator;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -142,29 +144,139 @@ public class BorsaTest {
 		assertSame(zaino, borsetta.getContenutoRaggruppatoPerPeso().get(zaino.getPeso()).iterator().next());
 	}	
 	
-	/*Lo abbiamo fatto in classe ma non mi convince perch� ho implementato cos� che non dovrei poter aggiungere un peso non lecito
+	/*-------------------------TEST SU getContenutoOrdinatoPerNome------------------------*/
 	@Test
-	public void getContenutoRaggruppatoPerPeso_DueAttrezziPesoDiverso(){
-		Attrezzo libro = new Attrezzo("Libro", 5);
-		Attrezzo incudine = new Attrezzo("Incudine", 100);
-		this.borsetta.addAttrezzo(libro);
-		this.borsetta.addAttrezzo(incudine);
-		assertEquals(2, borsetta.getContenutoRaggruppatoPerPeso().size());
-		assertSame(libro, borsetta.getContenutoRaggruppatoPerPeso().get(libro.getPeso()).iterator().next());
-		assertSame(incudine, borsetta.getContenutoRaggruppatoPerPeso().get(incudine.getPeso()).iterator().next());
-	}	
-	/*
-	 * 
-	 */
-	/*questo deve fallire*/
-//	@Test
-//	public void getContenutoRaggruppatoPerPeso_DueAttrezziPesoDiversoELimitato(){
-//		Attrezzo libro = new Attrezzo("Libro", 5);
-//		Attrezzo incudine = new Attrezzo("Incudine", 100);
-//		this.borsetta.addAttrezzo(libro);
-//		this.borsetta.addAttrezzo(incudine);
-//		assertEquals(2, borsetta.getContenutoRaggruppatoPerPesoLimitatoMax10().size());
-//		assertSame(libro, borsetta.getContenutoRaggruppatoPerPesoLimitatoMax10().get(libro.getPeso()).iterator().next());
-//		assertSame(incudine, borsetta.getContenutoRaggruppatoPerPesoLimitatoMax10().get(incudine.getPeso()).iterator().next());
-//	}	
+	public void getContenutoOrdinatoPerNome_BorsaVuota() {
+		Borsa borsaVuota = new Borsa();
+		assertTrue(borsaVuota.getContenutoOrdinatoPerNome().isEmpty());
+	}
+	
+	@Test
+	public void getContenutoOrdinatoPerNome_Singoletto() {
+		Borsa borsaSingoletto = new Borsa();
+		Attrezzo singoletto = new Attrezzo("singoletto", 1);
+		borsaSingoletto.addAttrezzo(singoletto);
+		assertEquals(1, borsaSingoletto.getContenutoOrdinatoPerNome().size());
+		assertSame(singoletto, borsaSingoletto.getContenutoOrdinatoPerNome().iterator().next());
+	}
+	
+	@Test
+	public void getContenutoOrdinatoPerNome_DueAttrezziStessoPeso() {
+		Borsa borsaDueOggetti = new Borsa();
+		Attrezzo primoAttrezzo = new Attrezzo("Abaco", 1);
+		Attrezzo secondoAttrezzo = new Attrezzo("Bottiglia", 1);
+		borsaDueOggetti.addAttrezzo(secondoAttrezzo);
+		borsaDueOggetti.addAttrezzo(primoAttrezzo);
+		assertEquals(2, borsaDueOggetti.getContenutoOrdinatoPerNome().size());
+		Iterator<Attrezzo> it = borsaDueOggetti.getContenutoOrdinatoPerNome().iterator();
+		assertSame(primoAttrezzo, it.next());
+		assertSame(secondoAttrezzo, it.next());
+	}
+	
+	@Test
+	public void getContenutoOrdinatoPerNome_StessoNomePesoDiverso() {
+		Borsa borsaDueOggetti = new Borsa();
+		Attrezzo primoAttrezzo = new Attrezzo("Abaco", 1);
+		Attrezzo secondoAttrezzo = new Attrezzo("Abaco", 2);
+		assertTrue(borsaDueOggetti.addAttrezzo(primoAttrezzo));
+		assertTrue(borsaDueOggetti.addAttrezzo(secondoAttrezzo));
+		assertEquals(1, borsaDueOggetti.getContenutoOrdinatoPerNome().size());
+		assertSame(primoAttrezzo, borsaDueOggetti.getContenutoOrdinatoPerNome().iterator().next());
+	}
+	
+	/*-------------------------TEST SU getContenutoOrdinatoPerPeso------------------------*/
+	 @Test
+	 public void getContenutoOrdinatoPerPeso_BorsaVuota() {
+	  Borsa borsaVuota = new Borsa();
+	  assertTrue(borsaVuota.getContenutoOrdinatoPerPeso().isEmpty());
+	 }
+	 
+	 @Test
+	 public void getContenutoOrdinatoPerPeso_Singoletto() {
+	  Borsa borsaSingoletto = new Borsa();
+	  Attrezzo singoletto = new Attrezzo("singoletto", 1);
+	  borsaSingoletto.addAttrezzo(singoletto);
+	  assertEquals(1, borsaSingoletto.getContenutoOrdinatoPerPeso().size());
+	  assertSame(singoletto, borsaSingoletto.getContenutoOrdinatoPerPeso().iterator().next());
+	 }
+	 
+	 @Test
+	 public void getContenutoOrdinatoPerPeso_DueAttrezziNomeDiversoePesoDiverso() {
+	  Borsa borsaDueOggetti = new Borsa();
+	  Attrezzo primoAttrezzo = new Attrezzo("A", 2);
+	  Attrezzo secondoAttrezzo = new Attrezzo("B", 1);
+	  borsaDueOggetti.addAttrezzo(primoAttrezzo);
+	  borsaDueOggetti.addAttrezzo(secondoAttrezzo);
+	  Iterator<Attrezzo> it = borsaDueOggetti.getContenutoOrdinatoPerPeso().iterator();
+	  assertSame(secondoAttrezzo, it.next());
+	  assertSame(primoAttrezzo, it.next());
+	 }
+	 
+	 @Test
+	 public void getContenutoOrdinatoPerPeso_DueAttrezziNomeDiversoStessoPeso() {
+	  Borsa borsaDueOggetti = new Borsa();
+	  Attrezzo primoAttrezzo = new Attrezzo("A", 1);
+	  Attrezzo secondoAttrezzo = new Attrezzo("B", 1);
+	  borsaDueOggetti.addAttrezzo(primoAttrezzo);
+	  borsaDueOggetti.addAttrezzo(secondoAttrezzo);
+	  Iterator<Attrezzo> it = borsaDueOggetti.getContenutoOrdinatoPerPeso().iterator();
+	  assertSame(primoAttrezzo, it.next());
+	  assertSame(secondoAttrezzo, it.next());
+	 }
+	 
+	 /*-------------------------TEST SU getSortedSetOrdinatoPerPeso------------------------*/
+	 
+	 @Test
+	 public void getSortedSetOrdinatoPerPeso_BorsaVuota() {
+	  Borsa borsaVuota = new Borsa();
+	  assertTrue(borsaVuota.getSortedSetOrdinatoPerPeso().isEmpty());
+	 }
+	 
+	 @Test
+	 public void getSortedSetOrdinatoPerPeso_Singoletto() {
+	  Borsa borsaSingoletto = new Borsa();
+	  Attrezzo singoletto = new Attrezzo("singoletto", 1);
+	  borsaSingoletto.addAttrezzo(singoletto);
+	  assertEquals(1, borsaSingoletto.getSortedSetOrdinatoPerPeso().size());
+	  assertSame(singoletto, borsaSingoletto.getSortedSetOrdinatoPerPeso().iterator().next());
+	 }
+	 
+	 @Test
+	 public void getSortedSetOrdinatoPerPeso_DueAttrezziNomeDiversoePesoDiverso() {
+	  Borsa borsaDueOggetti = new Borsa();
+	  Attrezzo primoAttrezzo = new Attrezzo("B", 1);
+	  Attrezzo secondoAttrezzo = new Attrezzo("A", 2);
+	  borsaDueOggetti.addAttrezzo(primoAttrezzo);
+	  borsaDueOggetti.addAttrezzo(secondoAttrezzo);
+	  Iterator<Attrezzo> it = borsaDueOggetti.getSortedSetOrdinatoPerPeso().iterator();
+	  assertSame(primoAttrezzo, it.next());
+	  assertSame(secondoAttrezzo, it.next());
+	 }
+	 
+	 @Test
+	 public void getSortedSetOrdinatoPerPeso_DueAttrezziNomeDiversoStessoPeso() {
+	  Borsa borsaDueOggetti = new Borsa();
+	  Attrezzo primoAttrezzo = new Attrezzo("A", 1);
+	  Attrezzo secondoAttrezzo = new Attrezzo("B", 1);
+	  borsaDueOggetti.addAttrezzo(primoAttrezzo);
+	  borsaDueOggetti.addAttrezzo(secondoAttrezzo);
+	  Iterator<Attrezzo> it = borsaDueOggetti.getSortedSetOrdinatoPerPeso().iterator();
+	  assertSame(primoAttrezzo, it.next());
+	  assertSame(secondoAttrezzo, it.next());
+	 }
+	 
+	 @Test
+	 public void getSortedSetOrdinatoPerPeso_DueAttrezziStessoNomeStessoPeso() {
+	  Borsa borsaDueOggetti = new Borsa();
+	  Attrezzo primoAttrezzo = new Attrezzo("A", 1);
+	  Attrezzo secondoAttrezzo = new Attrezzo("A", 1);
+	  borsaDueOggetti.addAttrezzo(primoAttrezzo);
+	  borsaDueOggetti.addAttrezzo(secondoAttrezzo);
+	  Iterator<Attrezzo> it = borsaDueOggetti.getSortedSetOrdinatoPerPeso().iterator();
+	  assertEquals(1, borsaDueOggetti.getSortedSetOrdinatoPerPeso().size());
+	  assertSame(primoAttrezzo, it.next());
+	 }
+	
+	
+
 }
